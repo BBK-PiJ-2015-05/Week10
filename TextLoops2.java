@@ -29,7 +29,8 @@ public class TextLoops2 implements Runnable {
 	}
 	
 	public static void main(String args[]) {
-		ExecutorService e = Executors.newFixedThreadPool(10);
+		ExecutorImpl e = new ExecutorImpl();
+		//ExecutorService e = Executors.newFixedThreadPool(10);
 		if (args.length < 1 || (!args[0].equals("0") && !args[0].equals("1"))) {
 			System.out.println("USAGE: java TextLoop <mode>");
 			System.out.println(" mode 0: without threads");
@@ -47,9 +48,6 @@ public class TextLoops2 implements Runnable {
 				e.execute(r);
 			}
 			e.shutdown();
-				while (!e.isTerminated()) {
-			}
-			System.out.println("Finished all threads");
 		}
 	}
 }
