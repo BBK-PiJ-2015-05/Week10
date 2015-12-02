@@ -38,11 +38,7 @@ public class FunWithStrings {
 		
 		//Sort by whether string contains 'e'
 		
-		Arrays.sort(stringArray, (a, b) -> {
-			if(!a.contains("e") && (b.contains("e"))) {
-				return 1;
-			} else return -1;
-		});
+		Arrays.sort(stringArray, (a, b) -> FunWithStrings.eChecker(a,b));
 		System.out.println("Sorted by presence of \'e\': ");
 		printArray();
 	}
@@ -52,5 +48,10 @@ public class FunWithStrings {
 		}
 	}
 	
+	public static int eChecker(String s1, String s2) {
+		if(!s1.contains("e") && (s2.contains("e"))) {
+				return 1;
+			} else return -1;
+	}
 	
 }
