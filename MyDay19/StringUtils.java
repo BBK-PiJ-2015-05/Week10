@@ -1,6 +1,7 @@
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Created by sconno05 on 07/12/2015.
@@ -14,13 +15,11 @@ public class StringUtils {
     }
 
     public static List<String> allMatches(List<String> words, Predicate<String> tester) {
-        List<String> testwords = new ArrayList<String>();
-        for(int i = 0; i < words.size(); i++){
-            if(tester.test(words.get(i))){
-                testwords.add(words.get(i));
-            }
-        }
 
-        return testwords;
+        return words.stream().filter(tester::test).collect(Collectors.toList());
+    }
+
+    public static List<String> transformedList(List<String> words, Function<String,String> tester){
+        return words.stream().map(tester::apply).collect(Collectors.toList());
     }
 }
